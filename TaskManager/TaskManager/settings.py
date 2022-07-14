@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     #local Apps
     
     'task',
-    'accounts'
+    'accounts',
     'profile',
 ]
 
