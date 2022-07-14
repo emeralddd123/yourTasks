@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     
     'task',
     'accounts'
+    'profile',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -134,6 +135,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#mwdia directory
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
