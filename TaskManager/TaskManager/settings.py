@@ -42,7 +42,12 @@ INSTALLED_APPS = [
     # 3rd party
     'allauth',
     'allauth.account', 
-    'allauth.socialaccount',     
+    'allauth.socialaccount',   
+    'verify_email.apps.VerifyEmailConfig',  
+    
+    #social apps
+    'allauth.socialaccount.providers.google',
+    
     
     #local Apps
     
@@ -155,10 +160,23 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 
 
