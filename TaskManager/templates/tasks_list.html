@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load bootstrap5 %} {# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    
+    <h1>Tasks</h1>
+
+    <ul>
+    {% for task in tasks %}
+        <li>{{task}}</li>
+    {% empty %}
+        <li>No tasks yet.</li>
+    {% endfor %}
+    </ul>
+
+    
+{% endblock content %}
+        
+

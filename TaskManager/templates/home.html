@@ -1,8 +1,37 @@
-{% if user.is_authenticated %}
-  Hi {{ user.email }}!
-  <p><a href="{% url 'account_logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'account_login' %}">Log In</a> |
-  <a href="{% url 'account_signup' %}">Sign Up</a>
-{% endif %}
+{% extends "base.html" %}
+
+{% load bootstrap5 %} {# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    
+  {% if user.is_authenticated %}
+    Hi {{ user.email }}!
+    <p><a href="{% url 'account_logout' %}">Log Out</a></p>
+  {% else %}
+  <div class="text-center" >
+    <div>
+      <img src="https://mdbootstrap.com/img/logo/mdb192x192.webp" class="img-fluid" alt="">
+    </div>
+    <div >
+      <h4>You are not logged in, please press sign up to register </h4>
+      <h4>or login to sign in if you already have an account </h4>
+
+    </div>
+    
+    <div class="text-center" >
+      
+      <a href="{% url 'account_login' %}"> {% bootstrap_button "Log in" button_type="link" size="md" button_class="btn-primary" %} </a> 
+      
+      <a href="{% url 'account_signup' %}">{% bootstrap_button "Sign up" button_type="link" size="md" button_class="btn-primary" %}</a>
+    </div>
+  </div>
+  {% endif %}
+
+
+    
+{% endblock content %}
+        
+

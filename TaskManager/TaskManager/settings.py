@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # 3rd party
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'bootstrap5',
+    
+    
     'allauth',
     'allauth.account', 
     'allauth.socialaccount',   
@@ -179,7 +184,11 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
-LOGIN_REDIRECT_URL = 'home'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
+LOGIN_REDIRECT_URL = 'task:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'task:home'
 
