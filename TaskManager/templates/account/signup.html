@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load bootstrap5 %} {# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class=" row d-flex align-items-center justify-content-center ">
+    <div style="border: 2px solid blue; width: 400px; padding: 25px; border-radius: 25px;">
+
+        <form method="post">
+            <!-- form input -->
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <br>
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                Sign up
+            </button>
+            {% endbuttons %}
+
+        </form>
+
+        <div class="text-center">
+            <p>Already have an account?<a href="http://localhost:8000/accounts/login/">Login</a></p>
+            <p>or sign in with:</p>
+
+            <a href="http://localhost:8000/accounts/google/login/?process=login"> <i class="bi bi-google"></i> </a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load bootstrap5 %} {# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class=" row d-flex align-items-center justify-content-center ">
+	<div style="border: 2px solid blue; width: 400px; padding: 25px; border-radius: 25px;">
+
+		<form method="post">
+			<!-- Email input -->
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			<br>
+			{% buttons %}
+			<button type="submit" class="btn btn-primary">
+				Sign in
+			</button>
+			{% endbuttons %}
+		</form>
+		<!-- 2 column grid layout for inline styling -->
+		<div class="row mb-4">
+
+			<div class="text-center">
+				<!-- Simple link -->
+				<a href="http://localhost:8000/accounts/password/reset/">Forgot password?</a>
+				<p>Not a member? <a href="http://localhost:8000/accounts/signup/">Register</a></p>
+				<p>or sign up with:</p>
+				<a href="http://localhost:8000/accounts/google/login/?process=login"> <i class="bi bi-google"></i> </a>
+
+			</div>
+	</div>
+
+</div>
+
+{% endblock content %}
