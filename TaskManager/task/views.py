@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from .models import Task
 from .forms import TaskUpdateForm, TaskForm 
 
@@ -57,3 +57,9 @@ class TaskUpdateView(LoginRequiredMixin,UpdateView):
     template_name = 'task_update.html'
     success_url = reverse_lazy('task:tasks')
     
+    
+class TaskDeleteView(LoginRequiredMixin,DeleteView):
+    model = Task
+    context_object_name= 'task'
+    template_name = 'task_delete.html'
+    success_url = reverse_lazy('task:tasks')
