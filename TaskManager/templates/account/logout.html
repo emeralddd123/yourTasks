@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load bootstrap5 %} {# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class="container">
+
+    <strong>Menu:</strong>
+    <ul>
+
+        <li><a href="/accounts/email/">Change E-mail</a></li>
+        <li><a href="/accounts/logout/">Sign Out</a></li>
+
+    </ul>
+
+
+    <h1>Sign Out</h1>
+
+    <p>Are you sure you want to sign out?</p>
+
+    <form method="post" action="/accounts/logout/">
+        <input type="hidden" name="csrfmiddlewaretoken"
+            value="VRPBCDClVleGChEVokOnPQ64cylYgN3vrYmSFjoFCfNRTE9sCLV4oJIt8ANnQWWs">
+
+        {% buttons %}
+        <button class="btn btn-danger" type="submit">Sign Out</button>
+        {% endbuttons %}
+    </form>
+
+</div>
+{% endblock content %}

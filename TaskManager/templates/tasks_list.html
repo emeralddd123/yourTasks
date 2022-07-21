@@ -6,18 +6,27 @@
 {% bootstrap_messages %}
 
 {% block content %}
+<div class=" container ">
     
     <h1>Tasks</h1>
 
     <ul>
     {% for task in tasks %}
         <li>{{task}}</li>
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{task.title }}</h5>
+            <p class="card-text">{{task.description }}</p>
+            <a href="#" class="btn btn-danger">Delete</a>
+        </div>
+        </div>
     {% empty %}
         <li>No tasks yet.</li>
     {% endfor %}
     </ul>
 
-    
+</div>    
 {% endblock content %}
         
 

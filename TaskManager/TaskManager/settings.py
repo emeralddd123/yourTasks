@@ -169,6 +169,11 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+
+#ACCOUNT_SESSION_REMEMBER = None or False or True
+#but i need to update my signin andor signup to involve remember me checkbox
+
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -189,6 +194,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 
-LOGIN_REDIRECT_URL = 'task:task'
+LOGIN_REDIRECT_URL = 'task:tasks'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'task:home'
 
