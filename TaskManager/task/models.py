@@ -1,10 +1,12 @@
-from datetime import date, time
+from datetime import date
 from datetime import timedelta
 from django.utils.text import slugify
 from django.urls import reverse
 import string, random
 from django.db import models
 from TaskManager.settings import AUTH_USER_MODEL as User
+
+
 
 def generate_random_slug():
     return ''.join(random.choice(string.digits) for _ in range(12))

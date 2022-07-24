@@ -7,6 +7,8 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import Task
 from .forms import TaskUpdateForm, TaskForm 
+from datetime import date
+
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -20,7 +22,12 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tasks"] = context['tasks'].filter(user=self.request.user)
-#        context["count"] = context['tasks'].filter(complete=False).count()
+        #context["no_uncompleted_tasks"] = context['tasks'].filter(complete=False).count()
+        #context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
+        #context["completed_tasks"] = context['tasks'].filter(complete=True)                
+        #context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
+        #context["expired_tasks"] = context['tasks'].filter(task_due_date=date.today())
+        
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:

@@ -55,10 +55,9 @@ INSTALLED_APPS = [
     
     
     #local Apps
-    
-    'task',
     'accounts',
-    'profile',
+    'task',
+        
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -188,8 +187,6 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-
-CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 

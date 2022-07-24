@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
-{% load bootstrap5 %} {# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %} {# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
+{% load crispy_forms_tags %}   
+  
+  
 {% block content %}
 
 <div class="container">
@@ -26,9 +24,9 @@
         <input type="hidden" name="csrfmiddlewaretoken"
             value="VRPBCDClVleGChEVokOnPQ64cylYgN3vrYmSFjoFCfNRTE9sCLV4oJIt8ANnQWWs">
 
-        {% buttons %}
+        
         <button class="btn btn-danger" type="submit">Sign Out</button>
-        {% endbuttons %}
+        
     </form>
 
 </div>
