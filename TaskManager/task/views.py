@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
@@ -8,6 +9,8 @@ from django.views.generic.edit import UpdateView, DeleteView
 from .models import Task
 from .forms import TaskUpdateForm, TaskForm 
 from datetime import date
+from django.db.models import Q
+import time
 
 
 class HomePageView(TemplateView):
@@ -22,21 +25,22 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tasks"] = context['tasks'].filter(user=self.request.user)
-        #context["no_uncompleted_tasks"] = context['tasks'].filter(complete=False).count()
-        #context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
-        #context["completed_tasks"] = context['tasks'].filter(complete=True)                
-        #context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
-        #context["expired_tasks"] = context['tasks'].filter(task_due_date=date.today())
+        context["no_uncompleted_tasks"] = context['tasks'].filter(complete=False).count()
+        context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
+        context["completed_tasks"] = context['tasks'].filter(complete=True)                
+        context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
+        context["expired_tasks"] = context['tasks'].filter(task_due_date__gte=date.today() ,task_due_time__gte=time.time())
+        #context["date"] = date.today()
         
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(
-                title__icontains=search_input)
+            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
 
         context['search_input'] = search_input
-
+        
         return context
+
 
     
 class NewTaskView(LoginRequiredMixin,View):
