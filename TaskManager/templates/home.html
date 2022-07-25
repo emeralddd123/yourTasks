@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% load crispy_forms_tags %}   
-  
-  
+{% load static %}
+{% load crispy_forms_tags %}
+
 {% block content %}
+
     
   {% if user.is_authenticated %}
     Hi {{ user.email }}!
@@ -11,20 +12,24 @@
   {% else %}
   <div class="text-center" >
     <div>
-      <img src="https://cheqqit.herokuapp.com/static/images/homepage_image.784c37c84e47.JPG" class="img-fluid" alt="">
+      <img src="{% static 'public/img/homepage_image.png' %}" class="img-fluid" alt="some random image">
     </div>
-    <div >
-      <h4>You are not logged in, please press sign up to register </h4>
-      <h4>or login to sign in if you already have an account </h4>
 
+    <div class="text-center" >
+            <h4>You are not logged in, please press sign up to register </h4>
+      <h4>or login to sign in if you already have an account </h4>
+      <br
+      <a href="{% url 'account_login' %}"> <button type="submit" class="btn btn-primary">
+        Login
+        </button> </a> 
+      
+      <a href="{% url 'account_signup' %}"><button type="submit" class="btn btn-primary">
+        Sign Up
+        </button></a>
     </div>
     
-    <div class="text-center" >
-      
-      <a href="{% url 'account_login' %}"> {% bootstrap_button "Log in" button_type="link" size="md" button_class="btn-primary" %} </a> 
-      
-      <a href="{% url 'account_signup' %}">{% bootstrap_button "Sign up" button_type="link" size="md" button_class="btn-primary" %}</a>
-    </div>
+    
+
   </div>
   {% endif %}
 
@@ -69,13 +74,12 @@
   <!-- Grid container -->
 
   <!-- Copyright -->
-  <div class="text-center text-light p-3" ">
+  <div class="text-center text-light p-3">
     © 2020 Copyright:
     <a class="text-light" href="https://mdbootstrap.com/">MDBootstrap.com</a>
   </div>
   <!-- Copyright -->
 </footer>
-
 
 
 {% endblock content %}

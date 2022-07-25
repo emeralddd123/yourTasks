@@ -29,7 +29,7 @@ class TaskList(LoginRequiredMixin, ListView):
         context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
         context["completed_tasks"] = context['tasks'].filter(complete=True)                
         context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
-        context["expired_tasks"] = context['tasks'].filter(task_due_date__gte=date.today() ,task_due_time__gte=time.time())
+        #context["expired_tasks"] = context['tasks'].filter(task_due_date__gte=date.today() ,task_due_time__gte=time.time())
         #context["date"] = date.today()
         
         

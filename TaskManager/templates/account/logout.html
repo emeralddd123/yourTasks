@@ -21,9 +21,9 @@
     <p>Are you sure you want to sign out?</p>
 
     <form method="post" action="/accounts/logout/">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="VRPBCDClVleGChEVokOnPQ64cylYgN3vrYmSFjoFCfNRTE9sCLV4oJIt8ANnQWWs">
-
+        {% csrf_token %}
+        {{ form | crispy }}
+        
         
         <button class="btn btn-danger" type="submit">Sign Out</button>
         
