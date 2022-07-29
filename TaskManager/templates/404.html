@@ -12,14 +12,15 @@
 
 </head>
 
-<body>
+<body class="container">
     <div class="text-center">
-        <div class="text-center " style="margin-left:10px ; margin-right:10px ;">
-            <img src="{% static 'public/img/lost.png' %}" class="img-fluid" alt="some random image">
+        <div  style="margin-left:10px ; margin-right:10px ;">
+            <img src="{% static 'public/img/404.png' %}" class="center" alt="some random image">
         </div>
-        <h2 style="text-align: center;">The page you are looking for couldn't be found</h2>
-        <button type="button" class="back-btn"><a href="{% url 'task:tasks' %}"
-                style="text-decoration: none; color: blue;">Go back</a></button>
+        <h2 style="text-align: center;">The page you are looking for couldn't be found on this server</h2>
+        <button type="button" class="btn btn-primary"><a href="{% url 'task:tasks' %}"
+                style="text-decoration: none; margin-left:10px; margin-right:10px; color: white;">Go back</a>
+        </button>
 
     </div>
 
