@@ -7,11 +7,11 @@
 {% block content %}
 <div style="margin-top:50px" class=" container ">
     
-    <h3>Tasks</h3>
+    <h3>Completed Tasks</h3>
     <div class="container">
         <div class="row">
         <ul>
-        {% for task in uncompleted_tasks %}
+        {% for task in completed_tasks %}
             <div class="col-sm"> 
                 <div class="card" style="width: auto;">
                 
@@ -24,25 +24,12 @@
             </div>
         <br> 
         {% empty %}
-            <li>No tasks yet.</li>
+            <li>No tasks is Completed yet.</li>
         {% endfor %}
         </ul>
         </div>
     </div>
-    {{no_uncompleted_tasks}}
-    {{uncompleted_tasks}}
-    {{completed_tasks}}
-    {{today_tasks}}
 
-    {% for task in uncompleted_tasks %}
-        {{task.task_due_date}}
-        {{task.task_due_time}}
-        {{" " }}
-    {% endfor %}
-{{" " }}
-{{" " }}
-{{" " }}
-    <h2>{#date#}</h2>
 </div>    
 {% endblock content %}
         

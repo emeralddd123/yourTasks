@@ -42,6 +42,44 @@ class TaskList(LoginRequiredMixin, ListView):
         return context
 
 
+class CompletedTaskList(LoginRequiredMixin, ListView):
+    model = Task
+    context_object_name= 'tasks'
+    template_name = 'completed_task_list.html'
+    
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tasks"] = context['tasks'].filter(user=self.request.user)
+        context["completed_tasks"] = context['tasks'].filter(complete=True)                
+
+        search_input = self.request.GET.get('search-area') or ''
+        if search_input:
+            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+
+        context['search_input'] = search_input
+        
+        return context
+    
+class TodayTaskList(LoginRequiredMixin, ListView):
+    model = Task
+    context_object_name= 'tasks'
+    template_name = 'today_task_list.html'
+    
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tasks"] = context['tasks'].filter(user=self.request.user)
+        context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())               
+        
+        search_input = self.request.GET.get('search-area') or ''
+        if search_input:
+            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+
+        context['search_input'] = search_input
+        
+        return context
+    
     
 class NewTaskView(LoginRequiredMixin,View):
     form_class = TaskForm
