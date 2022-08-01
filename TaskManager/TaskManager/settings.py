@@ -167,7 +167,7 @@ DEFAULT_FROM_EMAIL ='My Domain <noreply@mydomain.com>'
 #SERVER_MAIL = 'usman<@localhost>'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST = 'smtp-relay.sendinblue.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER =  config('EMAIL_ACCOUNT_NAME')
@@ -192,8 +192,8 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-ACCOUNT_EMAIL_VERIFICATION ='optional'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True        #i'll later change this to True
+ACCOUNT_EMAIL_VERIFICATION ='optional'     #i'll later change this to mandatory(perfect)/ optional(not advisable)
 
 
 

@@ -4,9 +4,9 @@
   
   
 {% block content %}
-
-<div class=" row d-flex align-items-center justify-content-center ">
-	<div style="border: 2px solid blue; width: 400px; padding: 25px; border-radius: 25px;">
+<div class=" row d-flex align-items-center justify-content-center " style="margin-top:5% ;"" >
+	<h4 style="margin-top:5% ;">Login </h4>
+<div style="border: 2px solid rgba(0, 0, 255, 0.418); width: 400px; padding: 25px; border-radius: 15px;">
 
 		<form method="post">
 			<!-- Email input -->
@@ -24,10 +24,10 @@
 
 			<div class="text-center">
 				<!-- Simple link -->
-				<a href="http://localhost:8000/accounts/password/reset/">Forgot password?</a>
-				<p>Not a member? <a href="http://localhost:8000/accounts/signup/">Register</a></p>
+				<a href="/accounts/password/reset/">Forgot password?</a>
+				<p>Not a member? <a href="/accounts/signup/">Register</a></p>
 				<p>or sign up with:</p>
-				<a href="http://localhost:8000/accounts/google/login/?process=login"> <i class="bi bi-google"></i> </a>
+				<a href="/accounts/google/login/?process=login"> <i class="bi bi-google"></i> </a>
 
 			</div>
 	</div>

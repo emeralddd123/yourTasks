@@ -1,49 +1,47 @@
 {% extends "base.html" %}
 
-{% load crispy_forms_tags %}   
+{% load crispy_forms_tags %}
 
 
-  
+
 {% block content %}
 <div style="margin-top:50px" class=" container ">
-    
+
     <h3>Tasks</h3>
-    <div class="container">
-        <div class="row">
-        <ul>
-        {% for task in uncompleted_tasks %}
-            <div class="col-sm"> 
-                <div class="card" style="width: auto;">
-                
-                    <div class="card-body">
-                        <h5 class="card-title">{{task.title }}</h5>
-                        <p class="card-text">{{task.description }}</p>
-                        <a href=  "/delete-task/{{task.slug}}"  class="btn btn-danger">Delete</a>    <a style="margin-left: 10px;" href=  "/update-task/{{task.slug}}"  class="btn btn-success">Update</a>
-                    </div>
-                </div>
+    
+        <div class="input-group">
+            <div id="search-autocomplete" class="form-outline">
+                <input type="search" id="search-area" class="form-control" />
+                <label class="form-label" for="search-area">Search</label>
             </div>
-        <br> 
-        {% empty %}
-            <li>No tasks yet.</li>
-        {% endfor %}
-        </ul>
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
-    </div>
-    {{no_uncompleted_tasks}}
-    {{uncompleted_tasks}}
-    {{completed_tasks}}
-    {{today_tasks}}
-
-    {% for task in uncompleted_tasks %}
-        {{task.task_due_date}}
-        {{task.task_due_time}}
-        {{" " }}
-    {% endfor %}
-{{" " }}
-{{" " }}
-{{" " }}
-    <h2>{#date#}</h2>
-</div>    
-{% endblock content %}
         
+        <div class="container">
+            <div class="row">
+                <ul>
+                    {% for task in uncompleted_tasks %}
+                    <div class="col-sm">
+                        <div class="card" style="width: auto;">
 
+                            <div class="card-body">
+                                <h5 class="card-title">{{task.title }}</h5>
+                                <p class="card-text">{{task.description }}</p>
+                                <a href="/delete-task/{{task.slug}}" class="btn btn-danger">Delete</a> <a
+                                    style="margin-left: 10px;" href="/update-task/{{task.slug}}"
+                                    class="btn btn-success">Update</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    {% empty %}
+                    <li>No tasks yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    {% endblock content %}

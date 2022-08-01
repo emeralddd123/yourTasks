@@ -25,17 +25,15 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tasks"] = context['tasks'].filter(user=self.request.user)
-        context["no_uncompleted_tasks"] = context['tasks'].filter(complete=False).count()
         context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
-        context["completed_tasks"] = context['tasks'].filter(complete=True)                
-        context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
-        #context["expired_tasks"] = context['tasks'].filter(task_due_date__gte=date.today() ,task_due_time__gte=time.time())
-        #context["date"] = date.today()
         
+        #context["no_uncompleted_tasks"] = context['tasks'].filter(complete=False).count()
+        #context["completed_tasks"] = context['tasks'].filter(complete=True)                
+        #context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+            context['uncompleted_tasks'] = context['uncompleted_tasks'].filter(title__icontains=search_input)
 
         context['search_input'] = search_input
         
@@ -55,7 +53,7 @@ class CompletedTaskList(LoginRequiredMixin, ListView):
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+            context['completed_tasks'] = context['completed_tasks'].filter(title__icontains=search_input)
 
         context['search_input'] = search_input
         
@@ -74,7 +72,7 @@ class TodayTaskList(LoginRequiredMixin, ListView):
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+            context['today_tasks'] = context['today_tasks'].filter(title__icontains=search_input)
 
         context['search_input'] = search_input
         
