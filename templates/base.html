@@ -23,15 +23,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'task:today-task'
-                    %}>Today_Tasks </a>
-                <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'task:add-task'
-                    %}>Add_Tasks</a>
                 <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'task:tasks' %}>Tasks </a>
-                <a class="nav-item nav-link active" style="padding-left:5%;" href={% url 'task:completed-task'
-                    %}>Completed_Tasks</a>
-                <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'account_logout' %}>Sign_out
-                </a>
+                <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'task:today-task'%}>Today_Tasks </a>
+                <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'task:add-task'%}>Add_Tasks</a>
+                <a class="nav-item nav-link active" style="padding-left:5%;" href={% url 'task:completed-task'%}>Completed_Tasks</a>
+                <a class="nav-item nav-link active" style="padding-left:5% ;" href={% url 'account_logout' %}>Sign_out</a>
             </div>
         </div>
     </nav>

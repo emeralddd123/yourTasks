@@ -51,7 +51,7 @@ class CompletedTaskList(LoginRequiredMixin, ListView):
         context["tasks"] = context['tasks'].filter(user=self.request.user)
         context["completed_tasks"] = context['tasks'].filter(complete=True)                
 
-        search_input = self.request.GET.get('search-area') or ''
+        search_input = self.request.GET.get('search-area') 
         if search_input:
             context['completed_tasks'] = context['completed_tasks'].filter(title__icontains=search_input)
 
