@@ -153,6 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
+
 # Test Runner Config
 class HerokuDiscoverRunner(DiscoverRunner):
     """Test Runner for Heroku CI, which provides a database for you.
@@ -161,7 +162,6 @@ class HerokuDiscoverRunner(DiscoverRunner):
     def setup_databases(self, **kwargs):
         self.keepdb = True
         return super(HerokuDiscoverRunner, self).setup_databases(**kwargs)
-
 
 # Use HerokuDiscoverRunner on Heroku CI
 if "CI" in os.environ:
