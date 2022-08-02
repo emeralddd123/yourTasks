@@ -27,10 +27,7 @@ class TaskList(LoginRequiredMixin, ListView):
         context["tasks"] = context['tasks'].filter(user=self.request.user)
         context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
         
-        #context["no_uncompleted_tasks"] = context['tasks'].filter(complete=False).count()
-        #context["completed_tasks"] = context['tasks'].filter(complete=True)                
-        #context["today_tasks"] = context['tasks'].filter(task_due_date=date.today())
-        
+
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['uncompleted_tasks'] = context['uncompleted_tasks'].filter(title__icontains=search_input)
@@ -58,6 +55,7 @@ class CompletedTaskList(LoginRequiredMixin, ListView):
         context['search_input'] = search_input
         
         return context
+    
     
 class TodayTaskList(LoginRequiredMixin, ListView):
     model = Task
