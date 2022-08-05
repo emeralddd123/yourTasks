@@ -181,7 +181,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-#DEFAULT_FROM_EMAIL ='My Domain <noreply@mydomain.com>'
+DEFAULT_FROM_EMAIL ='emerald<noreply@emerald-todo.herokuapp.com>'
 #SERVER_MAIL = 'usman<@localhost>'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
