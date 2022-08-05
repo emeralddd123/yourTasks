@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 0
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://emerald-todo.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emerald-todo.herokuapp.com']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     
+    
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -56,10 +57,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',   
     'verify_email.apps.VerifyEmailConfig',  
     
+    
     #social apps
     'allauth.socialaccount.providers.google',
     
-    
+        
     #local Apps
     'accounts',
     'task',
@@ -179,7 +181,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-DEFAULT_FROM_EMAIL ='My Domain <noreply@mydomain.com>'
+#DEFAULT_FROM_EMAIL ='My Domain <noreply@mydomain.com>'
 #SERVER_MAIL = 'usman<@localhost>'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -216,6 +218,7 @@ ACCOUNT_EMAIL_VERIFICATION ='optional'     #i'll later change this to mandatory(
 #ACCOUNT_SESSION_REMEMBER = None or False or True
 #but i need to update my signin andor signup to involve remember me checkbox
 
+#SECURE_SSL_REDIRECT = True
 
 
 SOCIALACCOUNT_PROVIDERS = {
