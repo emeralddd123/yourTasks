@@ -1,17 +1,25 @@
 {% extends "base.html" %}
-
+{% include "task_form.html" %}
 {% load crispy_forms_tags %}
-
 
 
 {% block content %}
 <div style="margin-top:50px" class=" container ">
+    <div style="display: flex; justify-content: space-between;">
+        <span>
+            <h3>Tasks</h3>
+        </span>
+        <span><button class="btn btn-primary btn-md" data-toggle="modal" data-target="#addModal"> <i
+                    class="bi bi-plus-lg"></i> &nbsp;&nbsp; Add Task</button></span>
 
-    <h3>Tasks</h3>
+    </div>
+    <br>
+
 
     <form method="GET">
         <div class="form-group">
-            <input type='text' class="form-control" name='search-area' placeholder=" Search for a task..." value="{{search_input}}">
+            <input type='text' class="form-control" name='search-area' placeholder=" Search for a task..."
+                value="{{search_input}}">
         </div>
     </form>
     <br>
@@ -23,17 +31,35 @@
                     <div class="card" style="width: auto;">
 
                         <div class="card-body">
-                            <h5 class="card-title">{{task.title }}</h5>
-                            <p class="card-text">{{task.description }}</p>
-                            <a href="/delete-task/{{task.slug}}" class="btn btn-danger">Delete</a> <a
-                                style="margin-left: 10px;" href="/update-task/{{task.slug}}"
-                                class="btn btn-success">Update</a>
+                            <div class="row" style="margin-left: auto;">
+                                <div class="col-8">
+                                    <h5 class="card-title"> {{task.title }}</h5>
+                                    <p class="card-text"> {{task.description }}</p>
+                                </div>
+
+                                <div class="col-4" >
+                                    <a style="margin-left: 10px;"><i class="bi bi-trash3-fill"
+                                            style="font-size: 1.5rem; color: orangered;" data-toggle="modal"
+                                            data-target="#deleteModal{{ task.slug }}"></i></a>
+
+                                    <a style="margin-left: 10px;"><i class="bi bi-pencil-square"
+                                            style="font-size: 1.5rem; color: gray;" data-toggle="modal"
+                                            data-target="#editModal{{ task.slug }}"></i></a>
+
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
+                {% include "task_update.html" %}
+                {% include "task_delete.html" %}
                 <br>
                 {% empty %}
                 <li>No tasks yet.</li>
+
+
                 {% endfor %}
             </ul>
         </div>

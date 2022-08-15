@@ -1,25 +1,60 @@
-{% extends "base.html" %}
-
 {% load crispy_forms_tags %}
-
-
-{% block content %}
-<h3 style="margin-left: 30px; color: #000;">Update Task</h3>
-<br>
-<div class="container">
-    <div class="card"
-        style="margin-left: 8px;border-color: blue; border-style: solid; border-radius: 23px; margin-right: 8px;">
-        <div class="card-body">
-            <form method="post" class="form">
-                {% csrf_token %}
-                {{ form | crispy }}
-
-                <button type="submit" class="btn btn-primary">
-                    Update
+<!-- Modal -->
+<div class="modal fade" {% block modal-id %} id="editModal{{ task.slug }}" {% endblock modal-id %} tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="editModalLabel"> {% block modal-title %} <i class="bi bi-pencil-square" ></i>&nbsp;&nbsp; Edit Task {% endblock modal-title %} </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
+            </div>
 
-            </form>
+            
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <form {% block action %} action="/update-task/{{task.slug}}/" {% endblock action %} method="POST">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                            
+                            
+                            
+                                <div id="div_id_title" class="mb-3"> <label for="id_title" class="form-label requiredField">
+                                        Title<span class="asteriskField">*</span> </label> <input type="text" name="title"
+                                        value="{{task.title}}" placeholder="Enter the task's title" maxlength="100"
+                                        class="textinput textInput form-control" required="" id="id_title"> </div>
+                                <div id="div_id_description" class="mb-3"> <label for="id_description" class="form-label">
+                                        Description
+                                    </label> <textarea name="description" cols="40" rows="6" placeholder="Enter the task's description"
+                                        maxlength="150" class="textarea form-control" id="id_description">{{task.description}}</textarea>
+                                </div>
+                                <div id="div_id_task_due_date" class="mb-3"> <label for="id_task_due_date" class="form-label">
+                                        Select the task's due date
+                                    </label> <input type="date" name="task_due_date" value="{{task.task_due_date}}" class="dateinput form-control"
+                                        id="id_task_due_date"> </div>
+                                <div id="div_id_task_due_time" class="mb-3"> <label for="id_task_due_time" class="form-label">
+                                        Select the task's due time
+                                    </label> <input type="time" name="task_due_time" value="{{task.task_due_time}}"" class="timeinput form-control"
+                                        id="id_task_due_time"> </div>
+                                <div class="mb-3">
+                                    <div id="div_id_complete" class="mb-3"> <input type="checkbox" name="complete" value="{{task.complete}}"
+                                            class="checkbox-inline checkboxinput form-check-input" id="id_complete"> <label for="id_complete"
+                                            class="form-check-label">
+                                            Completed this task?
+                                        </label> </div>
+                                </div>
+                                <button style="margin-left: 15px;" type="button" class="btn btn-danger"><a href="/task"
+                                        style="text-decoration: none; color: white;" box-shadow="none">Cancel</a></button>
+                                <button type="submit" class="btn btn-success" box-shadow="none">Update</button>
+
+                            
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
         </div>
     </div>
 </div>
-{% endblock content %}

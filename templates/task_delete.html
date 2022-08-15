@@ -1,21 +1,34 @@
-{% extends "base.html" %}
-
-{% load crispy_forms_tags %}   
-  
-  
-{% block content %}
-
-    <form method="post">{% csrf_token %}
-
-        <p>Are you sure you want to delete "{{ task }}"?</p>
-
-            
-                <button type="submit" class="btn btn-danger">
-                    Delete
+{% load crispy_forms_tags %}
+<!-- Modal -->
+<div class="modal fade" {% block modal-id %} id="deleteModal{{ task.slug }}" {% endblock modal-id %} tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="deleteModalLabel"> {% block modal-title %} <i class="bi bi-trash3-fill" ></i>&nbsp;&nbsp; Delete Task {% endblock modal-title %} </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
+            </div>
+
             
-    </form>
+                <div class="card">
+                    
+                    <div class="card-body">
+                        <form {% block action %} action="/delete-task/{{task.slug}}/" {% endblock action %} method="POST">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete "{{ task }}"?</p>
 
-
-{% endblock content %}
-
+                                <button type="submit" class="btn btn-danger">
+                                    Delete
+                                </button>
+                                             
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
