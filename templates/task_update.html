@@ -24,19 +24,19 @@
                                 <div id="div_id_title" class="mb-3"> <label for="id_title" class="form-label requiredField">
                                         Title<span class="asteriskField">*</span> </label> <input type="text" name="title"
                                         value="{{task.title}}" placeholder="Enter the task's title" maxlength="100"
-                                        class="textinput textInput form-control" required="" id="id_title"> </div>
+                                        class="textinput textInput form-control" required=" " id="id_title"> </div>
                                 <div id="div_id_description" class="mb-3"> <label for="id_description" class="form-label">
                                         Description
                                     </label> <textarea name="description" cols="40" rows="6" placeholder="Enter the task's description"
                                         maxlength="150" class="textarea form-control" id="id_description">{{task.description}}</textarea>
                                 </div>
                                 <div id="div_id_task_due_date" class="mb-3"> <label for="id_task_due_date" class="form-label">
-                                        Select the task's due date
+                                        Task's due date
                                     </label> <input type="date" name="task_due_date" value="{{task.task_due_date}}" class="dateinput form-control"
                                         id="id_task_due_date"> </div>
                                 <div id="div_id_task_due_time" class="mb-3"> <label for="id_task_due_time" class="form-label">
-                                        Select the task's due time
-                                    </label> <input type="time" name="task_due_time" value="{{task.task_due_time}}"" class="timeinput form-control"
+                                        Task's due time
+                                    </label> <input type="time" name="task_due_time" default="{{task.task_due_time}}" value="{{task.task_due_time}}" class="timeinput form-control"
                                         id="id_task_due_time"> </div>
                                 <div class="mb-3">
                                     <div id="div_id_complete" class="mb-3"> <input type="checkbox" name="complete" value="{{task.complete}}"

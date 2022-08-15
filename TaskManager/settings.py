@@ -107,11 +107,11 @@ WSGI_APPLICATION = 'TaskManager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': 'ec2-3-213-228-206.compute-1.amazonaws.com',
         'PORT': 5432,
     }
 }
@@ -213,7 +213,7 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True        #i'll later change this to True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False        #i'll later change this to True
 ACCOUNT_EMAIL_VERIFICATION ='optional'     #i'll later change this to mandatory(perfect)/ optional(not advisable)
 
 
