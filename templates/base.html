@@ -13,7 +13,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskManager</title>
+    <style>
+        .collapsing_button {
+        color: rgba(18, 18, 19, 0.781);
+        background-color: #eee;
+        cursor: pointer;
+        padding: 5px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 20px;
+        }
 
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active, .collapsing_button:hover {
+        background-color: #ccc;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,11 +43,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content:right; padding-right: 8%;">
             <div class="navbar-nav">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 20px;">
-                    <li class= "nav-item active"  > <a class="nav-link active" href={% url 'task:completed-task'%}>Completed Tasks</a> </i>
-                    <li class= "nav-item active"  > <a class="nav-link active" href={% url 'task:tasks' %}>Tasks </a> </li>
-                    <li class= "nav-item active"  > <a class="nav-link active" href={% url 'task:today-task'%}> Today Tasks </a> </i>
-                    <li class="nav-item active" style="padding-left: 10px;" >
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 20px; ">
+                    <li class= "nav-item active"  > <a class="nav-link active" style="background-color: blue;" href={% url 'task:tasks' %}>Tasks </a> </li>
+                    <li class= "nav-item active"  > <a class="nav-link active" style="background-color: blue;"href={% url 'task:today-task'%}> Today Tasks </a> </i>
+                    <li class="nav-item active" style="padding-left: 10px; background-color: blue;" >
                     <div class="dropdown show">
                         <a class="navbar-brand" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -40,8 +56,8 @@
                     
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href={% url 'account_logout' %}>Sign Out</a>
-                            <a class="dropdown-item" href="#">Another </a>
-                            <a class="dropdown-item" href="#">Something </a>
+                            <a class="dropdown-item" href={% url 'account_reset_password' %}>Reset Password </a>
+                            <a class="dropdown-item" href="#">Incoming </a>
                         </div>
                     </div>
                     </li>

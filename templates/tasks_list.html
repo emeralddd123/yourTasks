@@ -32,8 +32,8 @@
 
                         <div class="card-body">
                             <div class="row" style="margin-left: auto;">
-                                <div class="col-8">
-                                    <h6 class="card-title"> {{task.title|capfirst|truncatechars:20 }}</h6>
+                                <div class="col-8" data-toggle="modal" data-target="#editModal{{ task.slug }}">
+                                    <h6 class="card-title"> <i class="bi bi-square"></i>&nbsp {{task.title|capfirst|truncatechars:20 }}</h6>
                                     <p style="color:rgb(85, 82, 82);" class="card-text"> {{task.description|truncatechars:20 }}</p>
                                 </div>
 
@@ -48,7 +48,7 @@
 
                                 </div>
                                 <br>
-                                <div style="margin-top: 5px;"><i class="bi bi-calendar-week" style="font-size: 13px;">{% if task.task_due_date %} {{task.task_due_date}} {% else %} No due date{% endif %}</i>{% if task.task_due_date %}  &nbsp || &nbsp {% if task.task_due_time %} <i class="bi bi-clock" style="font-size: 13px;">{{task.task_due_time}}</i></div> {% else %} {% endif %} {% else %} {% endif %}  
+                                <div style="margin-top: 5px;"><i class="bi bi-calendar-week" style="font-size: 13px;">{% if task.task_due_date %} {{task.task_due_date}} {% else %} No due date{% endif %}</i>{% if task.task_due_date %}  &nbsp || &nbsp {% if task.task_due_time %} <i class="bi bi-clock" style="font-size: 13px;"> {{task.task_due_time}}</i></div> {% else %} {% endif %} {% else %} {% endif %}  
                             </div>
 
 
@@ -67,14 +67,14 @@
         </div>
     </div>
 
-<p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
 
-</p>
+  <button type="button" class="collapsing_button" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Completed Tasks &nbsp &nbsp <i class="bi bi-caret-down-fill"></i>
+  </button>
+    <br>
 <div class="collapse" id="collapseExample">
   <div class="container">
+  <br>
   <div class="row">
             <ul>
                 {% for task in completed_tasks %}
@@ -83,8 +83,8 @@
     
                         <div class="card-body">
                             <div class="row" style="margin-left: auto;">
-                                <div class="col-8">
-                                    <h6 class="card-title"> {{task.title|capfirst|truncatechars:20 }}</h6>
+                                <div class="col-8" data-toggle="modal" data-target="#editModal{{ task.slug }}">
+                                    <h6 class="card-title"><i class="bi bi-check-square-fill"></i> &nbsp {{task.title|capfirst|truncatechars:20 }}</h6>
                                     <p style="color:rgb(85, 82, 82);" class="card-text"> {{task.description|truncatechars:20}}</p>
                                 </div>
     

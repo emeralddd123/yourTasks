@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 1
+DEBUG = 0
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emerald-todo.herokuapp.com']
 
@@ -108,9 +108,9 @@ WSGI_APPLICATION = 'TaskManager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('TEST_DB_NAME'),
-        'USER': config('TEST_DB_USER'),
-        'PASSWORD': config('TEST_DB_PASSWORD'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': 'localhost',                #IT SHOULD BE THE HEROKU POSGRES HOST  BEFORE PUSHING TO PRODUCTION
         'PORT': 5432,
     }
