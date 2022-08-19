@@ -111,7 +111,7 @@ DATABASES = {
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'localhost',                #IT SHOULD BE THE HEROKU POSGRES HOST  BEFORE PUSHING TO PRODUCTION
+        'HOST': 'ec2-3-213-228-206.compute-1.amazonaws.com',               #IT SHOULD BE THE HEROKU POSGRES HOST  BEFORE PUSHING TO PRODUCTION
         'PORT': 5432,
     }
 }
