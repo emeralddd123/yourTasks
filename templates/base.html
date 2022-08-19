@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark  " style="background-color: blue;  width: 100%; z-index:10">
+    <nav class="navbar navbar-expand-md navbar-dark  " style="background-color: blue; position:fixed; top:0;  width: 100%; z-index:10">
 
         <a class="navbar-brand" style="margin-left: 5%;" href="{% url 'task:tasks'  %}"><h4> Tasker</h4></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -26,20 +26,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content:right; padding-right: 8%;">
             <div class="navbar-nav">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class= "nav-item active" > <a class="nav-link active" href={% url 'task:tasks' %}>Tasks </a> </li>
-                    <li class= "nav-item active" > <a class="nav-link active" href={% url 'task:today-task'%}> Today Tasks </a> </i>
-                    <li class= "nav-item active" > <a class="nav-link active" href={% url 'task:completed-task'%}>Completed Tasks</a> </i>
-                    <li class="nav-item active" style="margin-left: 20px;">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 20px;">
+                    <li class= "nav-item active"  > <a class="nav-link active" href={% url 'task:completed-task'%}>Completed Tasks</a> </i>
+                    <li class= "nav-item active"  > <a class="nav-link active" href={% url 'task:tasks' %}>Tasks </a> </li>
+                    <li class= "nav-item active"  > <a class="nav-link active" href={% url 'task:today-task'%}> Today Tasks </a> </i>
+                    <li class="nav-item active" style="padding-left: 10px;" >
                     <div class="dropdown show">
                         <a class="navbar-brand" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-person-circle"
-                                viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                <path fill-rule="evenodd"
-                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                            </svg>
+                            <i class="bi bi-person-circle"></i>
+                            hi {{user.username}}
                         </a>
                     
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -54,7 +50,8 @@
                 </div>
         </div>
     </nav>
-
+    <br/>
+    <br/>
     <div style="margin-top:10px;">
 
 

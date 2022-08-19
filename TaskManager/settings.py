@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 0
+DEBUG = 1
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emerald-todo.herokuapp.com']
 
@@ -108,10 +108,10 @@ WSGI_APPLICATION = 'TaskManager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'ec2-3-213-228-206.compute-1.amazonaws.com',
+        'NAME': config('TEST_DB_NAME'),
+        'USER': config('TEST_DB_USER'),
+        'PASSWORD': config('TEST_DB_PASSWORD'),
+        'HOST': 'localhost',                #IT SHOULD BE THE HEROKU POSGRES HOST  BEFORE PUSHING TO PRODUCTION
         'PORT': 5432,
     }
 }
@@ -142,9 +142,20 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+#DATE_INPUT_FORMATS = '%Y/%m/%d'
+
+DATE_FORMAT = "Y-m-d"
+
+#TIME_INPUT_FORMATS =  '%H:%I'
+
+TIME_FORMAT = "H:i"
+
+USE_L10N = False
+
 USE_I18N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -216,12 +227,9 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False        #i'll later change this to True
 ACCOUNT_EMAIL_VERIFICATION ='optional'     #i'll later change this to mandatory(perfect)/ optional(not advisable)
 
+SESSION_COOKIE_AGE = 12*60*60       #in seconds
 
-
-#ACCOUNT_SESSION_REMEMBER = None or False or True
-#but i need to update my signin andor signup to involve remember me checkbox
-
-#SECURE_SSL_REDIRECT = True
+ACCOUNT_SESSION_REMEMBER = False
 
 
 SOCIALACCOUNT_PROVIDERS = {

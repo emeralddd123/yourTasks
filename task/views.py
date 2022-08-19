@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
@@ -7,10 +6,11 @@ from django.views import View
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import UpdateView, DeleteView
 from .models import Task
-from .forms import TaskUpdateForm, TaskForm 
+from .forms import TaskUpdateForm, TaskForm
 from datetime import date
 from django.db.models import Q
 import time
+
 
 
 class HomePageView(TemplateView):
@@ -25,8 +25,10 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tasks"] = context['tasks'].filter(user=self.request.user)
-        context["uncompleted_tasks"] = context['tasks'].filter(complete=False)
+        context["uncompleted_tasks"] = context['tasks'].filter(complete=False).order_by('task_due_date','task_due_time').all()
         
+        context["completed_tasks"] = context['tasks'].filter(complete=True) 
+        print(context['uncompleted_tasks'] )
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
@@ -100,7 +102,8 @@ class TaskUpdateView(LoginRequiredMixin,UpdateView):
     model = Task 
     form_class = TaskUpdateForm
     template_name = 'task_update.html'
-    success_url = reverse_lazy('task:tasks')
+    #template_name = 'task-update-test.html'
+    #success_url = reverse_lazy('task:tasks')
     
     
 class TaskDeleteView(LoginRequiredMixin,DeleteView):
