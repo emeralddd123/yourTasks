@@ -102,9 +102,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'TaskManager.wsgi.application'
 
 
-# Database
+# Database # HEROKU stopped free postgres, thats why i comment the section for it out, the DB have been migrtaed to sqlite3
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -115,6 +115,15 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'taskAppDB', # This is where you put the name of the db file. 
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -170,18 +179,18 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
-# Test Runner Config
-class HerokuDiscoverRunner(DiscoverRunner):
-    """Test Runner for Heroku CI, which provides a database for you.
-    This requires you to set the TEST database (done for you by settings().)"""
+# # Test Runner Config
+# class HerokuDiscoverRunner(DiscoverRunner):
+#     """Test Runner for Heroku CI, which provides a database for you.
+#     This requires you to set the TEST database (done for you by settings().)"""
 
-    def setup_databases(self, **kwargs):
-        self.keepdb = True
-        return super(HerokuDiscoverRunner, self).setup_databases(**kwargs)
+#     def setup_databases(self, **kwargs):
+#         self.keepdb = True
+#         return super(HerokuDiscoverRunner, self).setup_databases(**kwargs)
 
-# Use HerokuDiscoverRunner on Heroku CI
-if "CI" in os.environ:
-    TEST_RUNNER = "gettingstarted.settings.HerokuDiscoverRunner"
+# # Use HerokuDiscoverRunner on Heroku CI
+# if "CI" in os.environ:
+#     TEST_RUNNER = "gettingstarted.settings.HerokuDiscoverRunner"
 
 
 # Default primary key field type
