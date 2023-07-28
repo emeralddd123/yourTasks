@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 0
+DEBUG = 1
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emerald-todo.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'emerald-todo.herokuapp.com', 'https://emeralddd123-fictional-fiesta-jw65gxp4v9wcpwx-8000.preview.app.github.dev']
 
 
 # Application definition
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'bootstrap5',
+
+    'corsheaders',
     
     
     'allauth',
@@ -76,9 +78,11 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'TaskManager.urls'
@@ -233,13 +237,14 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = False        #i'll later change this to True
-ACCOUNT_EMAIL_VERIFICATION ='optional'     #i'll later change this to mandatory(perfect)/ optional(not advisable)
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False        # later change this to True
+ACCOUNT_EMAIL_VERIFICATION ='optional'     # later change this to mandatory(perfect)/ optional(not advisable)
 
 SESSION_COOKIE_AGE = 12*60*60       #in seconds
 
 ACCOUNT_SESSION_REMEMBER = False
 
+CSRF_TRUSTED_ORIGINS = ['https://emeralddd123-fictional-fiesta-jw65gxp4v9wcpwx-8000.preview.app.github.dev']
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
