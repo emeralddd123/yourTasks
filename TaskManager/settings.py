@@ -208,7 +208,7 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 #SERVER_MAIL = 'usman<@localhost>'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-relay.sendinblue.com'
+EMAIL_HOST = 'smtp-relay.brevo.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER =  config('EMAIL_ACCOUNT_NAME')
